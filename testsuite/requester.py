@@ -1,10 +1,13 @@
 import requests
 import json
 from sys import exit
+import os
 from colorama import init, Fore, Back, Style
 
 
-root_url = 'http://127.0.0.1:45000'
+port = os.getenv('PORT')
+
+root_url = 'http://127.0.0.1:{}'.format(port)
 json_headers = {'Content-type': 'application/json'}
 
 

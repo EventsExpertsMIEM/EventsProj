@@ -229,7 +229,7 @@ def test_users(cookies={}):
             "email": SUPER_ADMIN_MAIL,
             "password": "1234"
         }
-        answer = requests.post('http://127.0.0.1:45000/login', data=json.dumps(data), headers={'Content-type': 'application/json'})
+        answer = requests.post('http://127.0.0.1:{}/login'.format(os.getenv('PORT')), data=json.dumps(data), headers={'Content-type': 'application/json'})
         cookies['admin'] = answer.cookies
     if not hasattr(cookies, 'user'):
         data = {
@@ -238,12 +238,12 @@ def test_users(cookies={}):
             "surname": "Surname",
             "password": "1234"
         }
-        answer = requests.post('http://127.0.0.1:45000/register', data=json.dumps(data), headers={'Content-type': 'application/json'})
+        answer = requests.post('http://127.0.0.1:{}/register'.format(os.getenv('PORT')), data=json.dumps(data), headers={'Content-type': 'application/json'})
         data = {
             "email": "mail@mail",
             "password": "1234"
         }
-        answer = requests.post('http://127.0.0.1:45000/login', data=json.dumps(data), headers={'Content-type': 'application/json'})
+        answer = requests.post('http://127.0.0.1:{}/login'.format(os.getenv('PORT')), data=json.dumps(data), headers={'Content-type': 'application/json'})
         cookies['user'] = answer.cookies
     if not hasattr(cookies, 'none'):
         cookies['none'] = ''
