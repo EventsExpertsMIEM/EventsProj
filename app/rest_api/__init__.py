@@ -18,7 +18,7 @@ def make_4xx(code, description):
 def get_json():
     data = request.get_json()
     if data is None:
-        make_4xx(415, 'Expected json')
+        abort(415, 'Expected json')
     return data
 
 

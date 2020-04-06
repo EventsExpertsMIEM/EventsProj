@@ -80,10 +80,6 @@ def events():
 @login_required
 def join(e_id):
     data = get_json()
-    try:
-        logging.debug(data)
-    except Exception as e:
-        make_4xx(415, e)
     events_logic.join_event(current_user.id, e_id, data)
     return make_ok(200, 'Successfully joined')
 
