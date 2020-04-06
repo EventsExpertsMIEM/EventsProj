@@ -3,6 +3,7 @@ import string
 import smtplib
 from email.message import EmailMessage
 from .config import cfg
+import logging
 
 
 def random_string_digits(str_len=8):
