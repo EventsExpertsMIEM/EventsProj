@@ -216,6 +216,7 @@
 
         <div><kbd>#!/bin/bash</kbd></div>
         <p></p>
+        
         <code># пользователь postgresql</code>
         <div><kbd>export PGUSER=""</kbd></div>
         <code># адрес postgresql</code>
@@ -227,9 +228,11 @@
         <code># пароль пользователя postgresql</code>
         <div><kbd>export PGPASSWORD=""</kbd></div>
         <p></p>
+
         <code># порт приложения</code>
         <div><kbd>export PORT=""</kbd></div>
         <p></p>
+
         <code># почта супер-администратора</code>
         <div><kbd>export SUPER_ADMIN_MAIL=""</kbd></div>
         <code># пароль от аккаунта супер-админа</code>
@@ -239,15 +242,33 @@
         <code># 'unconfirmed' (account_status) для включения</code>
         <div><kbd>export DEFAULT_USER_STATUS=""</kbd></div>
         <p></p>
-        <code># smtp сервер электронной почты</code>
-        <div><kbd>export SMTP_HOST=""</kbd></div>
-        <code># адрес электронной почты для отправки</code>
-        <div><kbd>export MAIL_LOGIN=""</kbd></div>
-        <code># пароль от электронной почты (рекомендуется создавать пароль приложения)</code>
-        <div><kbd>export MAIL_PASSWORD=""</kbd></div>
+
         <code># временно - линк на сервис (http(s)://адрес:порт)</code>
-        <div><kbd>export SITE_ADDR=""</kbd></div>
-        
+        <div></div><kbd>export SITE_ADDR=""</kbd></div>
+        <p></p>
+
+        <code># Уровень логгирования</code>
+        <div><kbd>export LOG_LEVEL=</kbd></div>
+        <code># Отключать ли сторонние логгеры (True, False)</code>
+        <div><kbd>export DISABLE_EXISTING_LOGGERS=</kbd></div>
+        <p></p>
+
+        <code># SMTP сервер</code>
+        <div><kbd>export MAIL_SERVER=""</kbd></div>
+        <code># Порт на почтовом сервере</code>
+        <div><kbd>export MAIL_PORT=25</kbd></div>
+        <code># Логин для почтового сервера</code>
+        <div><kbd>export MAIL_USERNAME=""</kbd></div>
+        <code># Пароль от почтового сервера</code>
+        <div><kbd>export MAIL_PASSWORD=""</kbd></div>
+        <code># Адрес, который будет указан в поле From</code>
+        <div><kbd>export MAIL_DEFAULT_SENDER="noreply@$SITE_ADDR"</kbd></div>
+        <p></p>
+
+        <code># Корневая папка для хранения загруженный файлов</code>
+        <div><kbd>export FILE_UPLOADS_PARENT_FOLDER="/var/www/uploadedFiles"</kbd></div>
+        <code># Максимальный размер файла (пока только в Мб)</code>
+        <div><kbd>export MAX_FILE_SIZE=100</kbd></div>
       </div>
     </section>
 
