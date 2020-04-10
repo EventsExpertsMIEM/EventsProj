@@ -41,7 +41,7 @@ def delete_event_by_id(e_id):
     return make_ok(200, 'Successfully deleted')
 
 
-@bp.route('/', methods=['POST'])
+@bp.route('/', methods=['POST'], strict_slashes=False) # Должен быть параметр strict_slashes false иначе 308 редирект
 @login_required
 def create_event():
     data = get_json()
