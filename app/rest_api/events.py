@@ -1,4 +1,4 @@
-from flask import Blueprint, jsonify, request, abort
+from flask import Blueprint, jsonify, request, abort, send_from_directory
 from flask_login import (login_required, login_user, logout_user,
                          login_fresh, current_user)
 
@@ -6,7 +6,6 @@ import bcrypt
 
 from . import *
 from ..logic import events as events_logic
-
 
 bp = Blueprint('events', __name__, url_prefix='/event')
 
@@ -82,7 +81,6 @@ def join(e_id):
     data = get_json()
     events_logic.join_event(current_user.id, e_id, data)
     return make_ok(200, 'Successfully joined')
-
 
 @bp.route('/<int:e_id>/presenters', methods=['GET'])
 def presenters(e_id):

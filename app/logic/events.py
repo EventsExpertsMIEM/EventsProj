@@ -1,6 +1,7 @@
 from ..config import cfg
 from ..db import *
 from .. import util
+
 import logging
 
 from sqlalchemy.exc import IntegrityError
@@ -239,13 +240,12 @@ def join_event(u_id, e_id, data):
         participation = Participation(e_id=e_id, u_id=u_id,
                                       participation_role='viewer')
         if data['role'] == 'presenter':
-            participation.participation_role = 'presenter'
-            participation.report = data['report']
+            role = 'presenter'
+            participation.participation_role = role
             participation.presenter_description = data['presenter_description']
             participation.report_description = data['report_description']
             participation.report_status = 'unseen'
-            role = 'presenter'
         s.add(participation)
         logging.info('User [id {}] joined event [id {}] as [{}]'.format(u_id,
                                                                         e_id,
-                                                                        role))            
+                                                                        role))

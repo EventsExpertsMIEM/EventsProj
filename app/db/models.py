@@ -21,7 +21,6 @@ Service_status = ENUM('superadmin', 'admin', 'moderator', 'user', name='service_
 Task_status = ENUM('todo', 'inprocess', 'waiting', 'done', 'deleted', name='task_status')
 Report_status = ENUM('unseen', 'approved', 'declined', name='report_status')
 
-
 class User(Base, UserMixin):
     __tablename__ = 'users'
     
@@ -81,7 +80,14 @@ class Participation(Base):
     id = Column(Integer, primary_key=True)
     e_id = Column(Integer, ForeignKey('events.id'), nullable=False)
     u_id = Column(Integer, ForeignKey('users.id'), nullable=False)
-    participation_role = Column(Participation_role, default='viewer', nullable=False)
+    participation_role = Column(
+                                Participation_role,
+                                default='viewer',
+                                nullable=False
+                            )
+    report_name = Column(TEXT, nullable=True)
+    report_id = Column(TEXT, nullable=True, unique=True)
+    last_updated = Column(DateTime, nullable=True, onupdate=datetime.now)
     presenter_description = Column(TEXT, nullable=True)
     report = Column(TEXT, nullable=True)
     report_description = Column(TEXT, nullable=True)
