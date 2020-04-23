@@ -244,7 +244,7 @@ def decline_report(r_id):
         participation.report_status = 'declined'
 
         logging.info(
-            'Report [id {r_id}] approved '.format(
+            'Report [id {r_id}] declined '.format(
                 r_id = r_id
             )
         )

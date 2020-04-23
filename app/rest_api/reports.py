@@ -69,10 +69,15 @@ def remove_report(e_id):
 @bp.route('report/<r_id>/approve', methods=['POST'])
 @login_required
 def approve_report(r_id):
+    if current_user.service_status is 'user':
+        abort(403, 'No rights')
     reports_logic.approve_report(r_id)
     return make_ok(200, 'Report approved')
 
 @bp.route('report/<r_id>/decline', methods=['POST'])
+@login_required
 def decline_report(r_id):
+    if current_user.service_status is 'user':
+        abort(403, 'No rights')
     reports_logic.decline_report(r_id)
     return make_ok(200, 'Report declined')
