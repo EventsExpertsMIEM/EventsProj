@@ -65,3 +65,14 @@ def get_reports(e_id):
 def remove_report(e_id):
     reports_logic.remove_report(current_user.id, e_id)
     return make_ok(200, 'Report removed successfully')
+
+@bp.route('report/<r_id>/approve', methods=['POST'])
+@login_required
+def approve_report(r_id):
+    reports_logic.approve_report(r_id)
+    return make_ok(200, 'Report approved')
+
+@bp.route('report/<r_id>/decline', methods=['POST'])
+def decline_report(r_id):
+    reports_logic.decline_report(r_id)
+    return make_ok(200, 'Report declined')

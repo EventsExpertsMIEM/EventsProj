@@ -52,6 +52,7 @@ def upload_report(u_id, e_id, file):
         report_id = reports_manager.save(file)
         participation.report_id = report_id
         participation.report_name = filename
+        participation.report_status = 'unseen'
         logging.info(
             'User [id {u_id}] uploaded report file '
             '[{fname}] for event [id {e_id}].'
@@ -212,5 +213,38 @@ def remove_report(u_id, e_id):
             'User [id {u_id}] deleted report [id {r_id}]'.format(
                 u_id = u_id,
                 r_id = report_id
+            )
+        )
+
+
+def approve_report(r_id):
+    with get_session() as s:
+        participation = s.query(Participation).filter(
+            Participation.report_id == r_id,
+        ).one_or_none()
+        if not participation:
+            abort(404, "Report not found")
+        
+        participation.report_status = 'approved'
+
+        logging.info(
+            'Report [id {r_id}] approved '.format(
+                r_id = r_id
+            )
+        )
+
+def decline_report(r_id):
+    with get_session() as s:
+        participation = s.query(Participation).filter(
+            Participation.report_id == r_id,
+        ).one_or_none()
+        if not participation:
+            abort(404, "Report not found")
+        
+        participation.report_status = 'declined'
+
+        logging.info(
+            'Report [id {r_id}] approved '.format(
+                r_id = r_id
             )
         )
